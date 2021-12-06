@@ -1,16 +1,18 @@
-package Entity;
+package Entity07286;
 
-public class AnggotaEntity07286 extends UserEntityAbstract07286{
+public class AnggotaEntity07286 extends UserAbstractEntity07286{
     private String noTelp;
     private String alamat;
     private int id;
     
-    public void AnggotaEntity07286(String nama, String password, String noTelp, String alamat){
+    public AnggotaEntity07286(String nama, String password, String noTelp, String alamat){
+        super(nama, password);
         this.noTelp = noTelp;
         this.alamat = alamat;
     }
     
-    public void AnggotaEntity07286(String nama, String pass){
+    public AnggotaEntity07286(String nama, String password){
+        super(nama, password);
     }
 
     public String getNoTelp() {
@@ -36,4 +38,5 @@ public class AnggotaEntity07286 extends UserEntityAbstract07286{
     public void setId(int id) {
         this.id = id;
     }
+    
 }

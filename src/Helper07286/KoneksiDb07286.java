@@ -1,13 +1,13 @@
-package Helper;
+package Helper07286;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-public class KoneksiDb {
+public class KoneksiDb07286 {
     public static Connection getconection(){
         Connection conn=null;
         String driver = "com.mysql.cj.jdbc.Driver";
-        String url = "jdbc:mysql://localhost:3306/db_verifikasipendaftaran";
+        String url = "jdbc:mysql://localhost:3306/db_perpustakaanapp";
 
         String user = "root";
         String pass = "";
