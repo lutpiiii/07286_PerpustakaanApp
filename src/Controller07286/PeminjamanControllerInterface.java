@@ -8,6 +8,6 @@ import java.util.ArrayList;
 public interface PeminjamanControllerInterface {
     void insertPinjaman(BukuEntity07286 buku, AnggotaEntity07286 anggota);
     void verifPengembalian(String idPeminjaman);
-    ArrayList<PeminjamanEntity07286> showAll();
-    ArrayList<PeminjamanEntity07286> showDataPinjam(int id);
+    ArrayList<PeminjamanEntity07286> showAllData();
+    ArrayList<PeminjamanEntity07286> showDataByPinjam(int id);
 }

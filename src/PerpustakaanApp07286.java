@@ -6,6 +6,8 @@ import Controller07286.BukuController07286;
 import Controller07286.BukuControllerInterface07286;
 import Controller07286.PeminjamanControllerImp;
 import Controller07286.PeminjamanControllerInterface;
+import Entity07286.AnggotaEntity07286;
+import Entity07286.BukuEntity07286;
 import java.util.Scanner;
 
 public class PerpustakaanApp07286 {
@@ -42,13 +44,13 @@ public class PerpustakaanApp07286 {
     
     public static void registrasi(){
         System.out.print("Nama      : ");
-        nama = input.nextLine();
+        nama = input.next();
         System.out.print("Password  : ");
-        password = input.nextLine();
+        password = input.next();
         System.out.print("No Telpon : ");
-        noTelp = input.nextLine();
+        noTelp = input.next();
         System.out.print("Alamat    : ");
-        alamat = input.nextLine();
+        alamat = input.next();
         anggotaCon.inserAnggota(nama, password, noTelp, alamat);
     }
     
@@ -238,30 +240,88 @@ public class PerpustakaanApp07286 {
     }
     
     public static void lihatDaftarPeminjam(){
-        
+
     }
     
     public static void verifikasiPengembalian(){
-        
+        lihatDaftarPeminjam();
+        System.out.println("Id Peminjam : ");
+        String idPeminjaman = input.next();
+        peminjamanCon.verifPengembalian(idPeminjaman);
     }
     
     public static void menuAnggota(int id){
-        
+        int pilih;
+        do{
+            System.out.println("id");
+            System.out.println("1. Lihat Riwayat Peminjaman");
+            System.out.println("2. Lakukan Peminjaman");
+            System.out.println("3. Adit Data Diri");
+            System.out.println("4. Keluar");
+            System.out.print("Pilih : ");
+            pilih = input.nextInt();
+            switch(pilih){
+                case 1:
+                    lihatRiwayatPeminjaman(id);
+                    break;
+                case 2:
+                    pinjamBuku(id);
+                    break;
+                case 3:
+                    editDataAnggota(id);
+                    break;
+            }
+        }while(pilih < 4);
     }
     
-    public static void riwayaPeminjaman(int id){
+    public static void lihatRiwayatPeminjaman(int id){
         
     }
     
     public static void pinjamBuku(int id){
-        
+        daftarBuku();
+        System.out.print("Isbn Buku : ");
+        String isbn = input.next();
+        BukuEntity07286 buku = bukuCon.getData(isbn);
+        AnggotaEntity07286 anggota = anggotaCon.getData(id);
+        peminjamanCon.insertPinjaman(buku, anggota);        
     }
     
     public static void editDataAnggota(int id){
-        
+        int pilih;
+        do{
+            System.out.println("1. Ubah Password");
+            System.out.println("2. Ubah Alamat");
+            System.out.println("3. Ubah No Telp");
+            System.out.println("4. Keluar");
+            System.out.print("Pilih : ");
+            pilih = input.nextInt();
+            if(pilih == 1){
+                dataAnggotaById(id);
+                System.out.print("Password Baru : ");
+                String pass = input.next();
+                anggotaCon.updateAku(1, pass, id);
+            }else if(pilih == 2){
+                dataAnggotaById(id);
+                System.out.print("Ubah Alamat : ");
+                String alamat = input.next();
+                anggotaCon.updateAku(2, alamat, id);
+            }else if(pilih == 3){
+                dataAnggotaById(id);
+                System.out.print("Ubah No Telp : ");
+                String noTelp = input.next();
+                anggotaCon.updateAku(3, noTelp, id);
+            }
+        }while(pilih < 4);
     }
     
-    public static void dataPenggunaById(int id){
-        
+    public static void dataAnggotaById(int id){
+        System.out.println(
+                anggotaCon.getData(id).getNama()+ " " +
+                anggotaCon.getData(id).getPassword()+ " " +
+                anggotaCon.getData(id).getNoTelp()+ " " +
+                anggotaCon.getData(id).getAlamat()
+                
+        );
     }
 }

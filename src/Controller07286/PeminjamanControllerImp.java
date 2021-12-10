@@ -18,12 +18,12 @@ public class PeminjamanControllerImp implements PeminjamanControllerInterface{
     }
 
     @Override
-    public ArrayList<PeminjamanEntity07286> showAll() {
+    public ArrayList<PeminjamanEntity07286> showAllData() {
         return AllObjectModel07286.peminjamanModel.getAll();
     }
 
     @Override
-    public ArrayList<PeminjamanEntity07286> showDataPinjam(int id) {
+    public ArrayList<PeminjamanEntity07286> showDataByPinjam(int id) {
         return AllObjectModel07286.peminjamanModel.getByPeminjam(id);
     }
     
